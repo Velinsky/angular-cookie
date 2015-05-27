@@ -2,7 +2,7 @@
   "name": "angular-cookie",
   "main": "angular-cookie.js",
   "version": "4.0.7",
-  "homepage": "https://github.com/ivpusic/angular-cookie",
+  "homepage": "https://github.com/Velinsky/angular-cookie",
   "authors": [
     "ivpusic <pusic007@gmail.com>"
   ],
@@ -12,7 +12,7 @@
     "angular"
   ],
   "license": "MIT",
-  "location": "git@github.com:ivpusic/angular-cookie.git",
+  "location": "git@github.com:Velinsky/angular-cookie.git",
   "ignore": [
     "**/.*",
     "node_modules",
