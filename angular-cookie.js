@@ -8,7 +8,7 @@ angular.module('ipCookie', ['ng']).
 factory('ipCookie', ['$document',
   function ($document) {
     'use strict';
-      
+
     function tryDecodeURIComponent(value) {
         try {
             return decodeURIComponent(value);
@@ -42,7 +42,7 @@ factory('ipCookie', ['$document',
             // Trying to delete a cookie; set a date far in the past
             if (expiresFor === -1) {
               options.expires = new Date('Thu, 01 Jan 1970 00:00:00 GMT');
-              // A new 
+              // A new
             } else if (options.expirationUnit !== undefined) {
               if (options.expirationUnit === 'hours') {
                 options.expires.setHours(options.expires.getHours() + expiresFor);
@@ -56,12 +56,18 @@ factory('ipCookie', ['$document',
             } else {
               options.expires.setDate(options.expires.getDate() + expiresFor);
             }
+
+            options.expires = options.expires.toUTCString();
           }
+          else if (typeof options.expires !== 'string') {
+            options.expires = options.expires.toUTCString();
+          }
+
           return ($document[0].cookie = [
             encodeURIComponent(key),
             '=',
             encodeURIComponent(value),
-            options.expires ? '; expires=' + options.expires.toUTCString() : '',
+            options.expires ? '; expires=' + options.expires : '',
             options.path ? '; path=' + options.path : '',
             options.domain ? '; domain=' + options.domain : '',
             options.secure ? '; secure' : ''
